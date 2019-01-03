@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="container">
+<button id="clear">Clear</button>
+</body>
+<script>
+var container = document.querySelector("#container");
+container.style.display = "grid";
+
+var clear = document.querySelector("#clear");
+clear.style.borderRadius = "0";
+clear.style.height = "32px";
+clear.style.width = "100px";
+clear.style.display = "block";
+clear.style.marginLeft = "auto";
+clear.style.marginRight = "auto";
+clear.style.fontFamily = "Inconsolata, Monospace";
+clear.style.textAlign = "center";
+
+for (i = 0; i < 16; i++) {
+	var row = document.createElement('div')
+	for (j = 0; j < 16; j++) {
+		var col = document.createElement('div')
+		col.style.float = "left";
+		col.style.width = "20px";
+		col.style.height = "20px";
+		col.style.border = "1px solid blue";
+		col.addEventListener('hover', function(event) {
+			event.target.style.backgroundColor = "black";
+		});
+		row.appendChild(col);
+	}
+	container.appendChild(row);	
+}
+
+clear.addEventListener('click', () => {
+	var nodes = document.querySelectorAll('div div')
+	for (var n of nodes)
+		n.style.backgroundColor = "white";
+	});
+</script>
+</html>
